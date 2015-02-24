@@ -1,0 +1,101 @@
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/additional-methods.min.js"></script>
+
+<script>
+
+
+
+ $('#download-request').validate({ 
+    errorClass: "invalid-field-class",
+    
+    rules: {
+      // contact info page
+      "first-name":     {required: true},
+      "last-name":      {required: true},
+      "email":          {required: true, email: true},    
+      "phone":          {required: true},
+      "title":          {required: true},
+      "company":        {required: true},
+      "address-1":      {required: true},
+      "city":           {required: true},
+      "state":          {required: true},
+      "zip":            {required: true},
+      "country":        {required: true},
+           
+      // terms page
+      "agree-checkbox": {required: true}
+    },
+  })
+
+  // Serialize form fields
+  // Returns an object with properties of form fields and values as entered.
+  $.fn.serializeObject = function()
+  {
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function() {
+        if (o[this.name] !== undefined) {
+            if (!o[this.name].push) {
+                o[this.name] = [o[this.name]];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';
+        }
+    });
+    return o;
+  }
+
+
+  // when submit button is pressed:
+  // submit data to the server
+  $("#submit-button").click(function() {
+
+     if ($("#download-request").valid()) {
+      
+       var formData = $("#download-request").serializeObject();
+       //console.log(JSON.stringify(Data));
+//       $("#terms-page").hide();
+//       $("#final-page").show();
+       google.script.run.withSuccessHandler(showSuccess)
+                        .withFailureHandler(showError)
+                        .addRequest(formData);     
+     }
+  });
+  
+
+  // when Next button is pressed:
+  // hide contact page and display the terms page "
+  //
+  $("#next-button").click(function() {
+    if ($("#download-request").valid()) {
+       $("#contact-page").hide();
+       $("#terms-page").show();
+    }
+  });
+    
+    
+  // show final "thank you" message
+  function showSuccess() {
+    $("#terms-page").hide();
+    $("#final-page").show();
+  }
+  
+  
+  //
+  // Logs an error message and shows an alert to the user.
+  //
+  function showError(error) {
+    $("#terms-page").hide();
+    console.log(error);
+    window.alert('An error has occurred, please try again.');
+  }
+  
+  
+  
+  
+</script>

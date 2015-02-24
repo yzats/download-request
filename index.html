@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+   <head>     
+      <?!= HtmlService.createHtmlOutputFromFile('Stylesheet').getContent(); ?>
+   </head>
+   <body>
+   <form name="download-request" id="download-request">
+      <div id="contact-page">
+         
+         <ul class="form-style-1">
+            <li><label>Full Name <span class="required">*</span></label>
+               <input type="text" name="first-name" id="first-name" class="field-divided" placeholder="First" />&nbsp;<input type="text" name="last-name" id="last-name" class="field-divided" placeholder="Last" />
+            </li>
+            <li>
+               <label>Email <span class="required">*</span></label>
+               <input type="email" name="email" id="email" class="field-long" />
+            </li>
+            <li>
+               <label>Phone Number <span class="required">*</span></label>
+               <input type="text" name="phone" id="phone" class="field-divided" />
+            </li>
+            <li>
+               <label>Title <span class="required">*</span></label>
+               <input type="text" name="title" id="title" class="field-divided" />
+            </li>
+            <li>
+               <label>Company Name <span class="required">*</span></label>
+               <input type="text" name="company" id="company" class="field-long" />
+            </li>
+            <li>
+               <label>Address Line 1 <span class="required">*</span></label>
+               <input type="text" name="address-1" id="address-1" class="field-long" />
+            </li>
+            <li>
+               <label>Address Line 2 </label>
+               <input type="text" name="address-2" id="address-2" class="field-long" />
+            </li>
+            <li>
+               <label>City<span class="required">*</span></label>
+               <input type="text" name="city" id="city" class="field-divided" />
+            </li>
+            <li>
+               <label>State/Province/Region<span class="required">*</span></label>
+               <input type="text" name="state" id="state" class="field-divided" />
+            </li>
+            <li>
+               <label>Zip/Postal Code<span class="required">*</span></label>
+               <input type="text" name="zip" id="zip" class="field-divided" />
+            </li>
+            <li>
+               <label>Country<span class="required">*</span></label>
+               <select name="country" id="country" class="field-select"> 
+               <?!= HtmlService.createHtmlOutputFromFile('Countries').getContent(); ?>
+               </select>
+            </li>
+            <li>
+               <label>Package<span class="required">*</span></label>
+               <select name="package" id="package" class="field-select"> 
+                  <option value="file1">file1</option> 
+                  <option value="file2">file2</option>                 
+               </select>
+            </li>
+            
+            <div align="right">
+            <li>    
+               <input type='button' name='next-button' id="next-button" value='Next'>
+            </li>
+            </div>
+         </ul>
+      </div>
+      
+      <div id="terms-page" name="terms-page" class="hidden">
+         <ul class="form-style-1">
+            <li>
+               <div class="terms">
+                  <p>Bacon ipsum dolor amet ground round kielbasa fatback tri-tip pork t-bone prosciutto boudin short loin chuck capicola alcatra beef spare ribs bacon. Beef shankle kielbasa chuck filet mignon. Alcatra jerky rump sausage andouille spare ribs. Shank turkey pastrami spare ribs tail prosciutto cow kevin drumstick venison meatball. Cupim ground round shankle chicken alcatra kevin doner biltong pork belly jowl turkey rump kielbasa. Flank cow fatback filet mignon, tongue alcatra strip steak chuck pork loin meatloaf jerky pig tenderloin salami. Leberkas jerky biltong, fatback pancetta alcatra kevin boudin hamburger salami pork belly.</p>
+                  <p>Beef ribs alcatra spare ribs ham, ball tip doner hamburger t-bone kevin frankfurter bresaola pork loin. Pork belly short ribs meatball, brisket beef ribs chuck filet mignon spare ribs. Chicken frankfurter andouille meatloaf beef shankle tenderloin t-bone porchetta. Salami porchetta shoulder short ribs. Landjaeger pork prosciutto ham hock kevin sausage ball tip frankfurter jowl pancetta venison ground round andouille. Pork chop filet mignon meatloaf ham, chuck turkey ball tip pig pastrami brisket venison. Turducken cow fatback, picanha ham pastrami spare ribs chicken.</p>
+                  <p>Shankle drumstick pancetta ham hock bresaola. Spare ribs meatloaf pig pork belly ham hock, alcatra salami capicola bacon chuck porchetta tri-tip corned beef. Rump sausage pancetta picanha porchetta cow beef ribs pork belly andouille ball tip leberkas turkey filet mignon short loin. Swine landjaeger jowl turkey pork belly prosciutto capicola ground round ham tail bacon meatloaf. Salami t-bone corned beef, tongue kielbasa cow kevin brisket tri-tip pancetta. Picanha pancetta spare ribs cow beef ribs brisket andouille.</p>
+                  <p>Turducken bresaola drumstick venison pig short ribs, cupim short loin bacon pork loin pastrami ribeye sausage kevin jerky. Fatback kielbasa porchetta, pancetta chicken alcatra kevin swine sausage short loin tenderloin pork loin ground round. Filet mignon tenderloin tail cupim picanha sirloin. Boudin shoulder cupim turducken prosciutto brisket, strip steak tail. Shank ham tongue ball tip leberkas frankfurter brisket rump flank biltong. Jerky doner jowl, spare ribs bresaola beef ham hock swine.</p>
+               </div>
+            </li>
+            <li>
+               <input type="checkbox" id = "agree-checkbox" name="agree-checkbox">I agree to the terms   
+            </li>
+            <div align="center">
+               <li> 
+                  <input type="button" id="submit-button" value="Submit" />              
+               </li>
+            </div>
+        </ul>
+      </div>
+      
+      <div id="final-page" name="final-page" class="hidden">
+         <ul class="form-style-1">
+            <li>
+               <p> Thank you for your request. Your download request has been received. </p>
+               <p> We will contact you shortly by email. </p>
+            </li>
+        </ul>
+      </div>
+      
+   </form>
+      
+   <?!= HtmlService.createHtmlOutputFromFile('JavaScript').getContent(); ?>
+
+   </body>
+</html>
